@@ -1,0 +1,19 @@
+---
+- name: Ensure git is installed (Fedora)
+  ansible.builtin.dnf:
+    name: git
+    state: present
+  when:
+    - ansible_os_family == 'RedHat'
+
+- name: Ensure git is installed (Ubuntu)
+  ansible.builtin.apt:
+    name: git
+    state: present
+  when:
+    - ansible_os_family == 'Debian'
+
+- name: Install Hugo
+  ansible.builtin.shell: |
+    echo "hello"
+  changed_when: false
